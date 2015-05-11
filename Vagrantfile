@@ -37,7 +37,12 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "projects", "/home/vagrant/projects"
+  
+  config.vm.synced_folder "data", "/home/oleksii/data", type: "nfs", owner: "oleksii", group: "oleksii"
+
+  # This uses uid and gid of the user that started vagrant.
+    config.nfs.map_uid = Process.uid
+    config.nfs.map_gid = Process.gid
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -68,4 +73,8 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+
+  # Run initial shell script.
+  config.vm.provision :shell, :path => "scripts/initSetup.sh"
+
 end
