@@ -40,10 +40,6 @@ Vagrant.configure(2) do |config|
   
   config.vm.synced_folder "data", "/home/oleksiizubko/data", type: "nfs", owner: "oleksiizubko", group: "oleksiizubko"
 
-  # This uses uid and gid of the user that started vagrant.
-    config.nfs.map_uid = Process.uid
-    config.nfs.map_gid = Process.gid
-
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
