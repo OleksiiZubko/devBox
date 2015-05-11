@@ -1,8 +1,5 @@
 # Set up user oleksiizubko.
 
-# Create the user oleksiizubko with password oleksiizubko
-useradd -G sudo -p $(perl -e'print crypt("oleksiizubko", "oleksiizubko")') -m -s /bin/zsh oleksiizubko
-
 # Install oleksiizubko keys
 mkdir -pm 700 /home/oleksiizubko/.ssh
 curl -Lo /home/oleksiizubko/.ssh/authorized_keys \
