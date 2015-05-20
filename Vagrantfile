@@ -38,7 +38,10 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   
-  config.vm.synced_folder "~/IdeaProjects", "/home/oleksiizubko/projects", type: "nfs", owner: "oleksiizubko", group: "oleksiizubko"
+  # As a typicaly initial folder structure for the project we have:
+  # projectName/devBox" and "projectName/app", so let's mount a %PROJECTROOT% 
+  # to the /home/vagrant/project folder on the guest host
+  config.vm.synced_folder "../", "/home/vagrant/project", type: "nfs", owner: "vagrant", group: "vagrant"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
